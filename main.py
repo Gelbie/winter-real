@@ -17,17 +17,17 @@ client = commands.Bot(command_prefix=("w?"),help_command=None)
 slash = SlashCommand(client, sync_commands=True)
 guild_ids = [889924479046778900]
 
-cogs = [music]
+#cogs = [music]
 
-for i in range(len(cogs)):
-    cogs[i].setup(client)
+#for i in range(len(cogs)):
+#    cogs[i].setup(client)
 
 @client.event
 async def on_ready():
   print("ready")
 
 @slash.slash(name="tree",
-             description="Your Tree", guild_ids=guild_ids)
+             description="Your Tree")
 async def tree(ctx):
     finalimg = random.choice(treeinimgs)
     embed = discord.Embed(title='Your Tree')
@@ -49,7 +49,7 @@ async def snow(ctx):
   await ctx.send(embed=embed)
 
 @slash.slash(name="snow",
-             description="Your Snow", guild_ids=guild_ids)
+             description="Your Snow")
 async def snow(ctx):
     finalimg = random.choice(snowinimgs)
     embed = discord.Embed(title='Your Snow')
@@ -64,7 +64,7 @@ async def help(ctx):
   await ctx.send(embed=embed)
 
 @slash.slash(name="help",
-             description="Commands", guild_ids=guild_ids)
+             description="Commands")
 async def help(ctx):
     embed=discord.Embed(title="HELP")
     embed.add_field(name="w?tree",value="Sends you an random image of an tree")
