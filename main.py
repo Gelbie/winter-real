@@ -1,11 +1,9 @@
 import os
 import discord
-import music
 import random
-import youtube_dl
-from keep_alive import keep_alive
 from discord.ext import commands
 from discord_slash import SlashCommand, SlashContext
+from keep_alive import keep_alive
 treeimg = open('trees.txt', 'r')
 treeinimgs = treeimg.readlines()
 snowimg = open('snow.txt', 'r')
@@ -17,10 +15,6 @@ client = commands.Bot(command_prefix=("w?"),help_command=None)
 slash = SlashCommand(client, sync_commands=True)
 guild_ids = [889924479046778900]
 
-#cogs = [music]
-
-#for i in range(len(cogs)):
-#    cogs[i].setup(client)
 
 @client.event
 async def on_ready():
@@ -35,7 +29,7 @@ async def tree(ctx):
     await ctx.send(embed=embed)
 
 @client.command()
-async def tree(ctx):
+async def _tree(ctx):
   finalimg= random.choice(treeinimgs)
   embed= discord.Embed(title="Your Tree")
   embed.set_image(url=finalimg)
@@ -50,7 +44,7 @@ async def snow(ctx):
 
 @slash.slash(name="snow",
              description="Your Snow")
-async def snow(ctx):
+async def _snow(ctx):
     finalimg = random.choice(snowinimgs)
     embed = discord.Embed(title='Your Snow')
     embed.set_image(url=finalimg)
@@ -60,17 +54,16 @@ async def snow(ctx):
 async def help(ctx):
   embed=discord.Embed(title="HELP")
   embed.add_field(name="w?tree",value="Sends you an random image of an tree")
-  embed.add_field(name="w?snow",value="Sends you an random image of snow.",inline=False)
+  embed.add_field(name="ww!snow",value="Sends you an random image of snow.",inline=False)
   await ctx.send(embed=embed)
 
 @slash.slash(name="help",
              description="Commands")
-async def help(ctx):
+async def _help(ctx):
     embed=discord.Embed(title="HELP")
-    embed.add_field(name="w?tree",value="Sends you an random image of an tree")
-    embed.add_field(name="w?snow",value="Sends you an random image of snow.",inline=False)
+    embed.add_field(name="/tree",value="Sends you an random image of an tree")
+    embed.add_field(name="/snow",value="Sends you an random image of snow.",inline=False)
     await ctx.send(embed=embed)
-
 
 keep_alive()
 client.run(my_secret)
