@@ -8,6 +8,9 @@ authors = ["Your Name <you@example.com>"]
 python = "^3.8"
 discord = "^1.7.3"
 discord-py-slash-command = "^3.0.1"
+youtube_dl = "^2021.6.6"
+PyNaCl = "^1.4.0"
+Flask = "^2.0.2"
 
 [tool.poetry.dev-dependencies]
 
